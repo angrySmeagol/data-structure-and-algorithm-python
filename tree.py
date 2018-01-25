@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 # Copyright 2018 cn_fgzhang
 #
-# 树和二叉树数据结构
-# 通过前缀表达式构建树或二叉树
+# 实现树和二叉树数据结构
+#
+# 实现通过前缀表达式构建树或二叉树
+#
 # a copy of the License at
 #
-#     https://github.com/angrySmeagol/data-structure-and-algorithm-python
+#     https://github.com/angrySmeagol/data-structure-and-algorithm-python/blob/master/tree.py
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-# License for the specific language governing permissions and limitations
-# under the License.
+#
+# 
 
 
 class Tree(object):
