@@ -10,7 +10,7 @@
 #     https://github.com/angrySmeagol/data-structure-and-algorithm-python/blob/master/tree.py
 #
 #
-# 
+#
 
 
 class Tree(object):
@@ -21,10 +21,10 @@ class Tree(object):
 
     def polish(self):
         data = ""
-        data += self.data
+        data += "{},".format(self.data)
         for i in self.children:
             if not i:
-                data += '$'
+                data += '$,'
             else:
                 data += i.polish()
         return data
@@ -54,7 +54,17 @@ class Tree(object):
         pass
 
     def parent(self, e):
-        pass
+        if self.data == e:
+            return False
+        for i in self.children:
+            if i is None:
+                return False
+            if i.data == e:
+                return self
+            result = i.parent(e)
+            if result is not False:
+                return result
+        return False
 
     def left_child(self, e):
         if self.data == e:
@@ -69,7 +79,16 @@ class Tree(object):
             return False
 
     def right_sibling(self, e):
-        pass
+        for i in self.children:
+            if i is None:
+                return False
+            elif i.data == e:
+                return self.children[self.children.index(i) + 1]
+            else:
+                result = i.right_sibling(e)
+                if result is not False:
+                    return result
+        return False
 
     def insert_child(self, e, i, c):
         pass
@@ -158,11 +177,10 @@ class BiTree(Tree):
 
 class CreateBiTree(object):
     def __init__(self, pre_expression):
-
-        self.data = list(pre_expression)
+        self.data = pre_expression.split(',')
 
     def create_bi_tree(self):
-        # 波兰式 pre_expression = "234$$$15$$$"
+        # 波兰式 pre_expression = "2,3,4,$,$,$,1,5,$,$,$"
 
         temp, self.data = self.data[0], self.data[1:]
         if temp == '$':
@@ -176,10 +194,10 @@ class CreateBiTree(object):
 
 class CreateTree(object):
     def __init__(self, pre_expression):
-        self.data = list(pre_expression)
+        self.data = pre_expression.split(',')
 
     def create_tree(self):
-        # polish pre_expression = "1256$$$378$$$49ac$d$e$f$$b$$$$"
+        # polish pre_expression = "1,2,5,6,$,$,$,3,7,8,$,$,$,4,9,a,c,$,d,$,e,$,f,$,$,b,$,$,$,$"
 
         temp, self.data = self.data[0], self.data[1:]
         if temp == "$":
@@ -193,3 +211,4 @@ class CreateTree(object):
                 flag = False
             b.children.append(c)
         return b
+
