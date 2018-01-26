@@ -108,6 +108,19 @@ class BiTree(Tree):
         self.l_child = None
         self.r_child = None
 
+    def polish(self):
+        data = ""
+        data += "{},".format(self.data)
+        if self.l_child:
+            data += self.l_child.polish()
+        else:
+            data += "$,"
+        if self.r_child:
+            data += self.r_child.polish()
+        else:
+            data += "$,"
+        return data
+
     def left_child(self, e):
         if self.data == e:
             return self.l_child
@@ -151,19 +164,6 @@ class BiTree(Tree):
 
     def pre_order_traverse(self, fuc):
         pass
-
-    def polish(self):
-        data = ""
-        data += self.data
-        if self.l_child:
-            data += self.l_child.polish()
-        else:
-            data += "$"
-        if self.r_child:
-            data += self.r_child.polish()
-        else:
-            data += "$"
-        return data
 
     def in_order_traverse(self, fuc):
         pass
@@ -211,4 +211,3 @@ class CreateTree(object):
                 flag = False
             b.children.append(c)
         return b
-
