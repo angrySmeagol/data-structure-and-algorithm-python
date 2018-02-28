@@ -1,0 +1,7 @@
+*.pyc
+.idea
+*.xml
+*.log
+djangocron*
+dump.rdb
+log/
